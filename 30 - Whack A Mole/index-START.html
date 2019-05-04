@@ -62,14 +62,13 @@
 
   function startGame(){
     scoreBoard.textContent = 0;
+    point = 0;
     timeUp = false;
     peep();
     setTimeout(() => timeUp = true, 10000);
   }
 
   function bonk(e){
-    console.log(this);
-    console.log(this.parentNode);
     this.parentNode.classList.remove('up');
     point++;
     scoreBoard.textContent = point;
