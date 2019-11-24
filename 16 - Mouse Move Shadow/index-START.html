@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Mouse Shadow</title>
 </head>
+
 <body>
 
   <div class="hero">
@@ -11,30 +13,108 @@
   </div>
 
   <style>
-  html {
-    color: black;
-    font-family: sans-serif;
-  }
+    html {
+      color: black;
+      font-family: sans-serif;
+    }
 
-  body {
-    margin: 0;
-  }
+    body {
+      margin: 0;
+    }
 
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-  }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+    }
 
-  h1 {
-    text-shadow: 10px 10px 0 rgba(0,0,0,1);
-    font-size: 100px;
-  }
+    h1 {
+      text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+      font-size: 100px;
+    }
   </style>
 
-<script>
-</script>
+  <script>
+    const hero = document.querySelector('.hero');
+    const text = document.querySelector('h1');
+
+    const shadow = (e) => {
+      const { offsetWidth: width, offsetHeight: height } = hero;
+      const { offsetX: x, offsetY: y } = e;
+    }
+
+    hero.addEventListener('mousemove', shadow);
+
+
+
+    const names = ['Bill Gates', 'Steve Jobs', 'Elon Musk'];
+    // required output -> ['BG', 'SJ', 'EM']
+
+    const answer = names.map((name) => {
+      let firstName = name.split(' ')[0];
+      let lastName = name.split(' ')[1];
+
+      let first1 = firstName.charAt(0);
+      let last1 = lastName.charAt(0);
+
+      return `${first1}${last1}`;
+    })
+
+    // console.log(answer);
+    // prettier されないね なんでだ
+
+
+
+    // "Two Sum" from leetcode | Level: EASY
+    // 整数のarray 足してターゲットの数になる数字のindex 2つをreturn
+    // ※答えのパターンは一つしかないとする
+
+    // 例）nums = [2, 7, 11, 15], target = 9,
+    // Because nums[0] + nums[1] = 2 + 7 = 9,
+    // return [0, 1].
+
+    //　function を書いてください
+
+    const nums1 = [2, 7, 11, 15];
+    const target1 = 18; // 18にしました
+
+    // const solution = (nums, target) => {
+
+    //   nums.forEach((num, index, ar) => {
+    //     ar.forEach((n) => {
+    //       if (n + num == target) {
+    //         const answer = [n, num];
+    //         return;
+    //       }
+    //     })
+    //     return answer;
+    //   });
+    // }
+    // const ans = solution(nums, target);
+    // console.log(ans);
+
+    const twoSum = (nums, target) => {
+      const map = {};
+      let answer = [];
+      nums.forEach((num, index) => {
+        // next is '11'
+        const diff = target - num;
+        if (map[diff] !== undefined) {
+          answer = [map[diff], index];
+        } else {
+          map[num] = nums.indexOf(num);
+        }
+      });
+      return answer;
+    }
+
+    console.log(twoSum(nums1, target1))
+
+
+
+  </script>
 </body>
+
 </html>
